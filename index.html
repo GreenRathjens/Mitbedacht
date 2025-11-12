@@ -7,16 +7,19 @@
   <style>
    /* ===================== */
 /* Grund-Styles */
+/* ===================== */
+/* Grund-Styles */
 body {
   margin: 0;
   font-family: Calibri, sans-serif;
   scroll-snap-type: y mandatory;
+  overflow-x: hidden; /* kein Scrollen horizontal */
   overflow-y: scroll;
   height: 100vh;
 }
 
 section {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,16 +64,15 @@ header {
 .sec5 { background: #5fcf68; }  
 
 /* ===================== */
-/* Section 1 Layout */
+/* Section 1 Layout fix */
 .top-content {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   gap: 80px;
   width: 100%;
   max-width: 1200px;
-  padding-top: 150px;
+  padding-top: 150px; /* Abstand von Header oben */
 }
 
 .sign {
@@ -87,6 +89,14 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.sign-post {
+  width: 50px;
+  height: 130px;
+  background: #555;
+  margin-top: -8px; /* direkt unter Sign-Board */
 }
 
 .Maskottchen_class img {
@@ -141,7 +151,6 @@ header {
   transform: translate(-50%, -50%);
 }
 
-/* Gehirn und Empathie */
 .brain-container img, .empathie-trigger img {
   width: 140px;
   height: auto;
@@ -260,7 +269,7 @@ p {
     padding: 40px 20px;
   }
 
-  /* Section 1 mobil: untereinander */
+  /* Section 1 mobil: Schild + Stel korrekt untereinander */
   .top-content {
     flex-direction: column;
     align-items: center;
@@ -274,8 +283,13 @@ p {
     height: auto;
   }
 
-  .right { gap: 15px; }
+  .sign-post {
+    height: 120px;
+    width: 40px;
+    margin-top: -5px;
+  }
 
+  .right { gap: 15px; }
   .right h2 { font-size: 1.8rem; }
 
   /* Zweispaltige Sections mobil untereinander */
@@ -482,6 +496,7 @@ animateEyes();
 </script>
 </body>
 </html>
+
 
 
 
