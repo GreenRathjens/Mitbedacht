@@ -5,25 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Umweltschutz Modern</title>
   <style>
-   body {
+   /* ===================== */
+/* Grund-Styles */
+body {
   margin: 0;
   font-family: Calibri, sans-serif;
   scroll-snap-type: y mandatory;
-  overflow-x: hidden; /* kein horizontal scroll */
   overflow-y: scroll;
+  height: 100vh;
 }
 
 section {
-  min-height: 100vh;
-  height: auto;
-  padding: 40px 20px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   scroll-snap-align: start;
-  box-sizing: border-box;
+  padding: 40px;
   opacity: 0;
   transform: translateY(50px);
   transition: all 1s ease;
@@ -41,6 +41,9 @@ header {
   width: 100%;
   padding: 20px;
   text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .header-logo {
@@ -49,31 +52,50 @@ header {
   vertical-align: middle;
 }
 
-/* Farben Sections */
-.sec1 { background: rgb(215, 252, 195); }
-.sec2 { background: #c9f2c7; }
-.sec3 { background: #a8e6a3; }
-.sec4 { background: #7fd87c; }
-.sec5 { background: #5fcf68; }
+/* ===================== */
+/* Section-Farben */
+.sec1 { background: rgb(215, 252, 195); }  
+.sec2 { background: #c9f2c7; }  
+.sec3 { background: #a8e6a3; }  
+.sec4 { background: #7fd87c; }  
+.sec5 { background: #5fcf68; }  
 
-/* Section 1 Inhalt */
+/* ===================== */
+/* Section 1 Layout */
 .top-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 80px;
+  width: 100%;
+  max-width: 1200px;
+  padding-top: 150px;
+}
+
+.sign {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
-  width: 100%;
-  max-width: 1200px;
-  padding-top: 0;
 }
 
-.Maskottchen_class img,
 .sign-board {
-  width: 90%;
-  max-width: 515px;
-  height: auto;
+  width: 515px;
+  height: 415px;
+  background: white;
+  border: 8px solid #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.Maskottchen_class img {
+  width: 515px;
+  height: 415px;
+  display: block;
+}
+
+/* Rechte Spalte */
 .right {
   display: flex;
   flex-direction: column;
@@ -83,16 +105,16 @@ header {
 
 .right h2 {
   font-size: 2rem;
-  line-height: 1.2;
   margin-bottom: 5px;
+  line-height: 1.2;
+  text-align: center;
 }
 
-/* Augenreihe */
-.eye-row {
+/* Augen-, Gehirn-, Empathie-Container */
+.eye-row, .brain-container, .empathie-trigger {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  margin-top: -85px;
+  margin-top: 20px;
 }
 
 .eye {
@@ -119,31 +141,15 @@ header {
   transform: translate(-50%, -50%);
 }
 
-/* Gehirn */
-.brain-container {
-  display: flex;
-  justify-content: center;
-  margin-top: -85px;
-}
-
-.brain-container img {
+/* Gehirn und Empathie */
+.brain-container img, .empathie-trigger img {
   width: 140px;
   height: auto;
+  display: block;
 }
 
-/* Empathie */
-.empathie-trigger {
-  display: flex;
-  justify-content: center;
-  margin-top: 35px;
-}
-
-.empathie-trigger img {
-  width: 140px;
-  height: auto;
-}
-
-/* Zweispaltige Sections */
+/* ===================== */
+/* Zweispaltige Sections (ab Section 2) */
 .content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -155,11 +161,13 @@ header {
 }
 
 .sec2 .col,
-.sec3 .col,
-.sec4 .col,
 .sec5 .col {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  align-items: stretch;
   gap: 50px;
 }
 
@@ -167,23 +175,42 @@ header {
   margin-top: 40px;
 }
 
+.col.visible-left, .col.visible-right {
+  min-height: 3.5em;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
 h2 {
   font-size: 2.2rem;
   font-weight: 700;
-  line-height: 1.3;
+  color: #2d2d2d;
+  line-height: 1.2;
   text-align: center;
-  margin: 0 0 15px 0;
   width: 100%;
+  margin: 0 0 0 0;
+  display: block;
+  height: auto;
+  min-height: 4.5em;
 }
 
 p {
   font-size: 1.2rem;
   color: #444;
   line-height: 1.6;
+  text-align: center;
   margin: 0;
 }
 
-/* Section 5 Listen */
+/* ===================== */
+/* Section 5 - Listenabstand */
+.sec5 .col.left h2:nth-of-type(2) { margin-bottom: 0px; }
+.sec5 .col.right p { margin-top: 0; margin-bottom: 15px; }
+.sec5 .col.right p.after-list { margin-top: 40px; }
+
+.sec5 .col ul { margin-top: 50px; }
+
 .sec5 .simple-list {
   list-style-type: disc;
   margin: 5px 0 0 auto;
@@ -197,32 +224,25 @@ p {
   color: #444;
 }
 
-.sec5 .col.right p.after-list {
-  margin-top: 40px;
-}
-
+/* ===================== */
 /* Illustrationen Zickzack */
 .illustrations {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 20px;
+  margin-top: 40px;
   width: 100%;
 }
 
 .illustration-row {
-  display: flex;
   width: 100%;
-  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 
-.illustration-row.left {
-  justify-content: flex-start;
-}
-
-.illustration-row.right {
-  justify-content: flex-end;
-}
+.illustration-row.left { justify-content: flex-start; }
+.illustration-row.right { justify-content: flex-end; }
 
 .illustration-row img {
   width: 130px;
@@ -231,53 +251,66 @@ p {
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+/* ===================== */
 /* Responsive für Handy */
 @media (max-width: 768px) {
-  body {
-    overflow-x: hidden;
-  }
-
   section {
     height: auto;
     min-height: auto;
     padding: 40px 20px;
   }
 
-  .sec1 .top-content,
-  .sec2 .content,
-  .sec3 .content,
-  .sec4 .content,
-  .sec5 .content {
+  /* Section 1 mobil: untereinander */
+  .top-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding-top: 60px;
+  }
+
+  .sign-board, .Maskottchen_class img {
+    width: 85%;
+    max-width: 400px;
+    height: auto;
+  }
+
+  .right { gap: 15px; }
+
+  .right h2 { font-size: 1.8rem; }
+
+  /* Zweispaltige Sections mobil untereinander */
+  .sec2 .content, .sec3 .content, .sec4 .content, .sec5 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 40px;
   }
 
-  .sec2 .col,
-  .sec3 .col,
-  .sec4 .col,
-  .sec5 .col {
+  .sec2 .col, .sec3 .col, .sec4 .col, .sec5 .col {
     width: 100%;
     max-width: 600px;
   }
 
-  h2 {
+  .sec2 h2, .sec3 h2, .sec4 h2, .sec5 h2 {
     font-size: 1.8rem;
+    min-height: auto;
+    margin-bottom: 15px;
   }
 
-  .Maskottchen_class img,
-  .sign-board,
-  .illustration-row img,
-  .brain-container img,
-  .empathie-trigger img {
-    width: 85%;
-    max-width: 300px;
-    height: auto;
+  .sec2 p, .sec3 p, .sec4 p, .sec5 p {
+    width: 100%;
+    text-align: center;
+    margin: 0 0 20px 0;
   }
 
+  /* Illustrationen untereinander */
+  .illustration-row {
+    width: 100%;
+    margin: 20px 0;
+  }
   .illustration-row.left { justify-content: flex-start; padding-left: 10%; }
   .illustration-row.right { justify-content: flex-end; padding-right: 10%; }
+  .illustration-row img { width: 85%; max-width: 300px; height: auto; }
 }
 
   </style>
@@ -449,6 +482,7 @@ animateEyes();
 </script>
 </body>
 </html>
+
 
 
 
