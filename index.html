@@ -354,23 +354,18 @@ max-width: 600px;
 }
 
 /* Responsiv: auf Handys zentrieren */
+/* Handy Ansicht */
 @media (max-width: 768px) {
 
-  /* Illustrationen zentrieren und skalieren */
-  .illustration-row {
-    justify-content: center !important; /* immer zentrieren */
+  /* Sections volle Breite & Höhe für grünen Hintergrund */
+  section {
+    width: 100%;
+    min-height: auto; /* Höhe passt sich Inhalt an */
+    padding: 40px 20px; /* Innenabstand */
+    box-sizing: border-box;
   }
 
-  .illustration-row img {
-    width: 85%;
-    max-width: 420px;
-    height: auto;
-    position: relative;
-    left: 0;
-    right: 0;
-  }
-
-  /* Zweispaltige Sections auf eine Spalte umbrechen */
+  /* Zweispaltige Sections: Spalten untereinander */
   .sec2 .content,
   .sec3 .content,
   .sec4 .content,
@@ -378,21 +373,20 @@ max-width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px; /* Abstand zwischen den Spalten */
-    width: 100%; /* volle Breite */
+    gap: 40px; /* Abstand zwischen Spalten */
   }
 
-  /* Überschriften anpassen */
+  /* Überschriften: Größe anpassen, bleiben an Position */
   .sec2 h2,
   .sec3 h2,
   .sec4 h2,
   .sec5 h2 {
     font-size: 1.8rem;
-    min-height: auto; /* keine feste Höhe */
+    min-height: auto;
     text-align: center;
   }
 
-  /* Paragraphen volle Breite und Padding */
+  /* Paragraphen volle Breite, zentriert */
   .sec2 .col p,
   .sec3 .col p,
   .sec4 .col p,
@@ -402,13 +396,24 @@ max-width: 600px;
     margin: 0 auto;
   }
 
-  /* Section-Hintergrund volle Breite sicherstellen */
-  section {
+  /* Illustrationen auf Mobile: untereinander zentriert */
+  .illustration-row {
+    justify-content: center !important;
     width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin: 20px 0;
   }
+
+  .illustration-row img {
+    width: 85%;
+    max-width: 300px; /* passt besser auf Handy */
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
 }
+
   </style>
 </head>
 <body>
@@ -578,4 +583,5 @@ animateEyes();
 </script>
 </body>
 </html>
+
 
