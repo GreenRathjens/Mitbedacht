@@ -357,15 +357,14 @@ max-width: 600px;
 /* Handy Ansicht */
 @media (max-width: 768px) {
 
-  /* Sections volle Breite & Höhe für grünen Hintergrund */
+  /* Sections Höhe automatisch an Inhalt */
   section {
-    width: 100%;
-    min-height: auto; /* Höhe passt sich Inhalt an */
+    height: auto;       /* kein 100vh */
+    min-height: auto;
     padding: 40px 20px; /* Innenabstand */
-    box-sizing: border-box;
   }
 
-  /* Zweispaltige Sections: Spalten untereinander */
+  /* Content Container: Spalten untereinander, zentriert */
   .sec2 .content,
   .sec3 .content,
   .sec4 .content,
@@ -376,42 +375,66 @@ max-width: 600px;
     gap: 40px; /* Abstand zwischen Spalten */
   }
 
-  /* Überschriften: Größe anpassen, bleiben an Position */
+  /* Links/Rechts Spalten volle Breite */
+  .sec2 .col,
+  .sec3 .col,
+  .sec4 .col,
+  .sec5 .col {
+    width: 100%;
+    max-width: 600px; /* Optional */
+  }
+
+  /* Überschriften stabil, Größe angepasst */
   .sec2 h2,
   .sec3 h2,
   .sec4 h2,
   .sec5 h2 {
     font-size: 1.8rem;
     min-height: auto;
+    margin-bottom: 15px;
+  }
+
+  /* Paragraphen */
+  .sec2 p,
+  .sec3 p,
+  .sec4 p,
+  .sec5 p {
+    width: 100%;
     text-align: center;
+    margin: 0 0 20px 0;
   }
 
-  /* Paragraphen volle Breite, zentriert */
-  .sec2 .col p,
-  .sec3 .col p,
-  .sec4 .col p,
-  .sec5 .col p {
-    width: 90%;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  /* Illustrationen auf Mobile: untereinander zentriert */
+  /* Illustrationen: untereinander, Zickzack */
   .illustration-row {
-    justify-content: center !important;
     width: 100%;
     margin: 20px 0;
   }
 
-  .illustration-row img {
-    width: 85%;
-    max-width: 300px; /* passt besser auf Handy */
-    height: auto;
-    display: block;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  /* Zickzack Links/Rechts */
+  .illustration-row.left {
+    justify-content: flex-start !important;
+    padding-left: 10%;
   }
 
+  .illustration-row.right {
+    justify-content: flex-end !important;
+    padding-right: 10%;
+  }
+
+  .illustration-row img {
+    width: 85%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+  }
+
+  /* Augen-/Gehirn-/Empathie-Container: Abstand zur Überschrift */
+  .right,
+  .eye-row,
+  .brain-container,
+  .empathie-trigger {
+    margin-top: 20px; /* Abstand von Überschrift */
+  }
 }
 
   </style>
@@ -583,5 +606,6 @@ animateEyes();
 </script>
 </body>
 </html>
+
 
 
